@@ -3,13 +3,13 @@ function game() {
     let pcCount=0;
 
     function capitalize (word) {  
-    word = word.toLowerCase();
-    let firstLetter;
-    firstLetter = word.charAt(0); 
-    firstLetter = firstLetter.toUpperCase();
-    word= word.slice(1);
-    return firstLetter + word;
-    }
+        word = word.toLowerCase();
+        let firstLetter;
+        firstLetter = word.charAt(0); 
+        firstLetter = firstLetter.toUpperCase();
+        word= word.slice(1);
+        return firstLetter + word;
+        }
     
 
     do {
