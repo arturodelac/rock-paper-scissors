@@ -1,71 +1,91 @@
-function game() {
-    let playerCount =0;
-    let pcCount=0;
-
-    function capitalize (word) {  
-        word = word.toLowerCase();
-        let firstLetter;
-        firstLetter = word.charAt(0); 
-        firstLetter = firstLetter.toUpperCase();
-        word= word.slice(1);
-        return firstLetter + word;
-        }
+  
+let playerCount =0;
+let pcCount=0;
+  
+  //button listener 
+  
+    const buttons = document.querySelectorAll('.button');
+  
+    buttons.forEach((button) => {button.addEventListener('click',()=> {game(button.id)})});
     
+    
+  
+        
+  
+  
+  const container = document.querySelector('#results-container');
+  
+  const playAgain = document.createElement('button');
+   
+  const result = document.createElement('h1');
+  const count = document.createElement('h1')
+  const selected = document.createElement('h1');
+  const versus = document.createElement('h1');
+  
 
-    do {
-    let userSelection =  prompt("Rock, Paper or Scissors?");
-    console.log(userSelection);
-    userSelection = capitalize(userSelection);
-    console.log(userSelection);
-            
+  container.appendChild(selected);
+  container.appendChild(versus);
+  container.appendChild(result);
+  container.appendChild(count);
+
+  
+ 
+  
+
+function game(userSelection) {
+    
+  
+   
 
     
     const ChoicesArray = ["Scissors", "Paper", "Rock"];
-        
-         if (ChoicesArray.includes(userSelection)) {
-            console.log("You selected " + userSelection)}
-        else {userSelection = prompt("Rock, Paper or Scissors?");
-            userSelection = capitalize(userSelection);}
+    //displays user selection    
+    selected.textContent = ("You selected " + userSelection);
+
+    //assigns computer choice and then displays round 
     const computerChoice = ChoicesArray[Math.floor(Math.random()*ChoicesArray.length)];
-        
+    versus.textContent= (userSelection + " vs. "+ computerChoice)    
 
              
     function playRound(playerChoice, randomChoice) {
-        console.log("Round = " + playerChoice + " vs " + randomChoice)
-        
+       //possible cases 
         switch(playerChoice) {
             case "Rock": if (randomChoice == "Scissors") {
-                                console.log("You win!");
-                                playerCount++
+                                playerCount++;
+                                return("You win!");
                         }
                         else if (randomChoice == "Rock") {
-                                console.log("It's a tie!")
+                                return("It's a tie!")
                         }
-                        else {console.log("You lose! :(");
-                                pcCount++;
+                        else {
+                            pcCount++;
+                            return("You lose! :(");
+                                
                         }
                         break;
             case "Paper": if (randomChoice == "Rock") {
-                                console.log("You win!");
-                                playerCount++
+                                 playerCount++
+                                return("You win!");
                         }
                         else if (randomChoice == "Paper") {
-                                console.log("It's a tie!")
+                                return("It's a tie!")
                         }   
-                        else {console.log("You lose! :(");
-                                pcCount++;
+                        else {
+                            pcCount++;
+                            return("You lose! :(");
                         }
                         break;
             
             case "Scissors": if (randomChoice == "Paper") {
-                                console.log("You win!");
-                                 playerCount++
-                             }
-                        else if (randomChoice == "Scissors") {
-                                console.log("It's a tie!")
-                            }
-                        else {console.log("You lose! :(");
                                 pcCount++;
+                                return("You win!");                             }
+                        else if (randomChoice == "Scissors") {
+                                return("It's a tie!")
+                            }
+                        else {
+                                pcCount++;
+                                return("You lose! :(");
+                            
                             }
                         break;
             }
@@ -75,17 +95,60 @@ function game() {
 
 
         }
-        console.log(playRound(userSelection,computerChoice))}
-        while (playerCount < 5 || pcCount < 5);
 
-        if(playerCount==5) {
-            console.log("You are the winner!!!")
+        const round = playRound(userSelection,computerChoice);
+        //displays round
+        if(playerCount<4 && pcCount<4){
+        result.textContent = (round) ;
+        
         }
-        else {console.log("You are the loser! :(")}
 
-    }
+        if (playerCount>5 || pcCount>5){}
+
+        count.textContent= (playerCount + "-" + pcCount);
+
+  
+      // while (playerCount < 5 || pcCount < 5);
+         //final result
+
+       if(playerCount==5 && pcCount <5) {
+        count.textContent="";
+            selected.textContent="";
+            versus.textContent="";
+        result.textContent =("You are the ultimate winner!")
+        playAgain.classList.add("playAgain")
+            playAgain.addEventListener('click',()=> {
+            pcCount=0;playerCount=0;container.removeChild(playAgain);result.textContent="";})
+            container.appendChild(playAgain)
+            playAgain.textContent=('Play again?');}
+       
+        if(pcCount==5  && playerCount<5) {
+            count.textContent="";
+            selected.textContent="";
+            versus.textContent="";
+            result.textContent =("You are a big LOSAAAAR")
+            playAgain.classList.add("playAgain")
+            playAgain.addEventListener('click',()=> {
+                pcCount=0;playerCount=0;container.removeChild(playAgain);result.textContent="";})
+            container.appendChild(playAgain)
+            playAgain.textContent=('Play again?');}
+
+            if (playerCount>5 || pcCount>5){
+                count.textContent="";
+            selected.textContent="";
+            versus.textContent="";
+
+
+            }
+        
+        
+        
+        }
+      
+
+ //   }
    
-
-
-
+        
+      
+    
     
