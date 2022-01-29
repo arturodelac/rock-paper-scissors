@@ -14,20 +14,21 @@ let pcCount=0;
   
   
   const container = document.querySelector('#results-container');
-  
+  const bigContainer = document.querySelector('.big-container');
   const playAgain = document.createElement('button');
    
   const result = document.createElement('h1');
-  const count = document.createElement('h1')
-  const selected = document.createElement('h1');
-  const versus = document.createElement('h1');
+  const count = document.createElement('h3');
+  const userCount = document.createElement('h3');
+  const selected = document.createElement('h2');
+  const versus = document.createElement('h2');
   
 
   container.appendChild(selected);
   container.appendChild(versus);
   container.appendChild(result);
-  container.appendChild(count);
-
+  bigContainer.appendChild(count);
+  bigContainer.insertBefore(userCount,container);
   
  
   
@@ -105,7 +106,11 @@ function game(userSelection) {
 
         if (playerCount>5 || pcCount>5){}
 
-        count.textContent= (playerCount + "-" + pcCount);
+        count.textContent=  pcCount;
+        count.setAttribute('style','align-self:center;');
+
+        userCount.textContent=  playerCount;
+        userCount.setAttribute('style','align-self:center;');
 
   
       // while (playerCount < 5 || pcCount < 5);
@@ -113,6 +118,7 @@ function game(userSelection) {
 
        if(playerCount==5 && pcCount <5) {
         count.textContent="";
+        userCount.textContent="";
             selected.textContent="";
             versus.textContent="";
         result.textContent =("You are the ultimate winner!")
@@ -124,6 +130,7 @@ function game(userSelection) {
        
         if(pcCount==5  && playerCount<5) {
             count.textContent="";
+            userCount.textContent="";
             selected.textContent="";
             versus.textContent="";
             result.textContent =("You are a big LOSAAAAR")
@@ -137,6 +144,7 @@ function game(userSelection) {
                 count.textContent="";
             selected.textContent="";
             versus.textContent="";
+            userCount.textContent="";
 
 
             }
