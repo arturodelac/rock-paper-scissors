@@ -6,7 +6,20 @@ let pcCount=0;
   
     const buttons = document.querySelectorAll('.button');
   
-    buttons.forEach((button) => {button.addEventListener('click',()=> {game(button.id)})});
+    buttons.forEach((button) => {button.addEventListener('click',()=> {game(button.id); button.classList.add('clicked');})});
+
+
+    function removeTransition(e) {
+        if(e.propertyName !== 'transform') return; //ignore if the event is no transform
+        this.classList.remove('clicked');
+        console.log(this)
+        
+        }
+        const clicked = document.querySelectorAll('.button');
+    
+        clicked.forEach(click => click.addEventListener('transitionend',removeTransition));
+
+   
     
     
   
@@ -123,9 +136,10 @@ function game(userSelection) {
             versus.textContent="";
         result.textContent =("You are the ultimate winner!")
         playAgain.classList.add("playAgain")
+        container.appendChild(playAgain)
             playAgain.addEventListener('click',()=> {
             pcCount=0;playerCount=0;container.removeChild(playAgain);result.textContent="";})
-            container.appendChild(playAgain)
+            
             playAgain.textContent=('Play again?');}
        
         if(pcCount==5  && playerCount<5) {
@@ -133,7 +147,7 @@ function game(userSelection) {
             userCount.textContent="";
             selected.textContent="";
             versus.textContent="";
-            result.textContent =("You are a big LOSAAAAR")
+            result.textContent =("You Lost!")
             playAgain.classList.add("playAgain")
             playAgain.addEventListener('click',()=> {
                 pcCount=0;playerCount=0;container.removeChild(playAgain);result.textContent="";})
@@ -153,6 +167,8 @@ function game(userSelection) {
         
         }
       
+
+        ;
 
  //   }
    
