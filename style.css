@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.header {
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.game {
+    display: flex;
+    flex: 1;
+    height: 100vh;
+}
+
+.rock {
+
+
+    background-color: #6E8658;
+}
+
+.cont:hover {
+    width: 150%;
+    transition: 200ms;
+}
+
+
+.paper {
+
+
+    background-color: #EFE9E1;
+}
+
+.scissors {
+
+    background-color: #73A1B2;
+}
+
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
