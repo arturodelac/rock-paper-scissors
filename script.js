@@ -3,6 +3,12 @@ let counterPlayer = 0;
 let counterPc = 0;
 let divs = document.querySelectorAll(".cont")
 
+const playerC = document.querySelector("#playerC")
+
+
+const PcC = document.querySelector("#PcC")
+
+
 
 //listents for input
 divs.forEach((div) => div.addEventListener("click", function (e) {
@@ -50,6 +56,36 @@ function playGame() {
     else if (x == "Computer Wins") {
         counterPc = counterPc + 1;
         //alert(x);
+    }
+
+    else {
+        counterPc = counterPc + 1;
+        counterPlayer = counterPlayer + 1;
+    }
+
+
+    PcC.textContent = counterPc;
+    playerC.textContent = counterPlayer;
+
+    if (counterPc >= 5) {
+        counterPc = 0;
+        counterPlayer = 0;
+
+
+        PcC.textContent = counterPc;
+        playerC.textContent = counterPlayer;
+        return alert("Pc Wins");
+
+    }
+
+    if (counterPlayer >= 5) {
+        counterPc = 0;
+        counterPlayer = 0;
+
+
+        PcC.textContent = counterPc;
+        playerC.textContent = counterPlayer;
+        return alert("Player Wins");
     }
     //else
     //alert("Tie");

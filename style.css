@@ -49,3 +49,13 @@
     height: 100%;
     width: 100%;
 }
+
+.counter {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 800;
+    font-size: 32px;
+}
