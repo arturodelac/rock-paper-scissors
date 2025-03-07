@@ -92,7 +92,7 @@ function playRound() {
 }
 
 function playGame() {
-    while (pcScore < 5 || humanScore < 5) {
+    while (pcScore < 5 && humanScore < 5) {
         playRound()
     }
 }
