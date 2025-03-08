@@ -35,7 +35,7 @@ let displaypcScore = document.getElementById('pcScore')
 
 function updateText() {
     displayHumanScore.textContent = `${humanScore}`;
-    displaypcScore.textContent = `Pc Score is ${pcScore}`;
+    displaypcScore.textContent = `${pcScore}`;
 }
 
 

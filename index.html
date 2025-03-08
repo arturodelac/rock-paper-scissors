@@ -7,12 +7,18 @@
         <link rel="stylesheet" href="style.css">
         <script defer src="script.js" defer></script>
     </head>
-    <body>
-        <button onclick="clickRock()">rock</button>
-        <button id="paper">paper</button>
-        <button id="scissors">scissors</button>
+    <body><div class="main-container">
 
-        <div id="pcScore">></div>
-        <div id="humanScore">></div>
+            <img class='images' src="images/stone.png" onclick="clickRock()">
+            <img class='images' src="images/file.png" onclick="clickPaper()">
+            <img class='images' src="images/scissors.png"
+                onclick="clickScissors()">
+        </div>
+
+        <section class="scores">
+            <div class="Score"><h3 id="pcScore">0</h3> <h3>PC</h3></div>
+
+            <div class="Score"><h3 id="humanScore">0</h3> <h3>YOU</h3></div>
+        </section>
     </body>
 </html>
