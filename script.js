@@ -1,3 +1,5 @@
+//Creates a Random Choice for the PC
+
 function getComputerChoice() {
     const computerChoice = Math.random();
     if (computerChoice <= .33) {
@@ -11,23 +13,36 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let humanChoice = prompt("Choose your weapon", "rock");
-    humanChoice = humanChoice.toLowerCase();
-    while (humanChoice != "rock" && humanChoice != "paper" && humanChoice != "scissors") {
-        humanChoice = prompt("Choose your weapon", "rock");
-    }
-    humanChoice = humanChoice.toLowerCase();
-    return humanChoice
+//Listeners for User Choice
+
+function clickRock() {
+    playRound('rock')
 }
 
+function clickPaper() {
+    playRound('paper')
+}
+function clickScissors() {
+    playRound('scissors')
+}
+
+//Keeps score and updates the webpage
 
 let humanScore = 0;
 let pcScore = 0;
+let displayHumanScore = document.getElementById('humanScore');
+let displaypcScore = document.getElementById('pcScore')
+
+function updateText() {
+    displayHumanScore.textContent = `${humanScore}`;
+    displaypcScore.textContent = `Pc Score is ${pcScore}`;
+}
 
 
-function playRound() {
-    let humanChoice = getHumanChoice();
+//Game Logic
+
+function playRound(humanChoice) {
+
     let computerChoice = getComputerChoice();
 
 
@@ -35,60 +50,65 @@ function playRound() {
     switch (humanChoice) {
         case "rock":
             if (computerChoice == "rock") {
-                console.log("It's a tie")
+                humanScore++;
+                pcScore++;
                 break;
             }
             else if (computerChoice == "paper") {
-                console.log("Rock vs Paper, Pc Wins");
                 pcScore++;
-                console.log(pcScore)
                 break;
             }
             else {
-                console.log("Rock vs Scissors, You Win!");
                 humanScore++;
-                console.log(humanScore)
                 break;
             }
 
 
         case "paper":
             if (computerChoice == "paper") {
-                console.log("It's a tie")
+                humanScore++;
+                pcScore++;
                 break;
             }
             else if (computerChoice == "scissors") {
-                console.log("Paper vs Scissors, Pc Wins");
                 pcScore++;
-                console.log(pcScore)
                 break;
             }
             else {
-                console.log("Paper vs Rock, You Win!");
                 humanScore++;
-                console.log(humanScore)
                 break;
             }
 
         case "scissors":
             if (computerChoice == "scissors") {
-                console.log("It's a tie")
+                humanScore++;
+                pcScore++;
                 break;
             }
             else if (computerChoice == "rock") {
-                console.log("Scissors vs Rock, Pc Wins");
                 pcScore++;
-                console.log(pcScore)
                 break;
             }
             else {
-                console.log("Scissors vs Paper, You Win!");
                 humanScore++;
-                console.log(humanScore)
                 break;
 
             }
     }
+
+
+    if (pcScore == 5) {
+        alert('pcWinssss');
+        pcScore = 0;
+        humanScore = 0;
+    }
+
+    else if (humanScore == 5) {
+        alert('Youw wwwwinssss');
+        pcScore = 0;
+        humanScore = 0;
+    }
+    updateText();
 }
 
 function playGame() {
@@ -98,4 +118,4 @@ function playGame() {
 }
 
 
-playGame();
+
